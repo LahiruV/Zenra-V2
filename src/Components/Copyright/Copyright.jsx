@@ -6,7 +6,7 @@ const Copyright = () => {
       {'Copyright © '}
       <Link color="inherit" href="https://ai.google.dev/gemini-api">
       Zenra Travels
-      </Link>
+      </Link> {' '}
       {new Date().getFullYear()}
     </Typography>
   );
