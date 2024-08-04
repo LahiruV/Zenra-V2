@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../../Components/NavBar/Navbar';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { DataGrid } from '@mui/x-data-grid';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Grid } from '@mui/material';
+import DataGridTable from '../../Components/Grid/DataGrid';
 
 const defaultTheme = createTheme();
 
@@ -178,12 +178,10 @@ export default function MyTrips() {
         <ThemeProvider theme={defaultTheme}>
             <Navbar />
             <div style={{ width: '100%', marginTop: 50 }}>
-                <DataGrid 
-                    rows={trips} 
+                <DataGridTable 
+                    trips={trips} 
                     columns={columns} 
-                    pageSize={5} 
-                    style={{ color: 'black', backgroundColor: 'white' }}
-                    getRowId={(row) => row._id}
+                    pageSize={5}                     
                 />
             </div>
             <Dialog open={open} onClose={handleClose}>

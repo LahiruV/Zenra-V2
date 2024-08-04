@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../../Components/NavBar/Navbar';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Container, Box, Typography, List, ListItem, ListItemText, Button, Avatar, Card, CardContent, CardActions } from '@mui/material';
@@ -11,7 +11,6 @@ export default function FriendsList() {
     const [friends, setFriends] = useState([]);
     const loguser = sessionStorage.getItem('user');
     const navigate = useNavigate();
-
 
     useEffect(() => {
         const fetchFriends = async () => {
@@ -80,35 +79,44 @@ export default function FriendsList() {
                         Friends List
                     </Typography>
                     <List>
-                        {friends.map((friend) => (
-                            <ListItem key={friend._id}>
-                                <Card sx={{ width: '100%' }}>
-                                    <CardContent>
-                                        {friend.from._id === loguser ? (
-                                            <>
-                                                <Avatar alt={friend.to.name} src={friend.to.profile} />
-                                                <ListItemText primary={friend.to.name} sx={{ ml: 2 }} />
-                                            </>
-                                        ) : friend.to._id === loguser ? (
-                                            <>
-                                                <Avatar alt={friend.from.name} src={friend.from.profile} />
-                                                <ListItemText primary={friend.from.name} sx={{ ml: 2 }} />
-                                            </>
-                                        ) : null}
-                                    </CardContent>
-                                    <CardActions>
-                                        <Button variant="contained" color="warning" onClick={() => handleMessage(friend.to._id, friend.from._id)}>
-                                            Chat
-                                        </Button>
-                                        <Button variant="contained" color="secondary" onClick={() => handleRemoveFriend(friend._id)}>
-                                            Remove Friend
-                                        </Button>
-                                    </CardActions>
-                                </Card>
-                            </ListItem>
-                        ))}
-                    </List>
+                        {friends.map((friend) => {
+                            const fromUser = friend.from;
+                            const toUser = friend.to;
 
+                            if (!fromUser || !toUser) {
+                                console.error('Friend data is missing', friend);
+                                return null;
+                            }
+
+                            return (
+                                <ListItem key={friend._id}>
+                                    <Card sx={{ width: '100%' }}>
+                                        <CardContent>
+                                            {fromUser._id === loguser ? (
+                                                <>
+                                                    <Avatar alt={toUser.name} src={toUser.profile} />
+                                                    <ListItemText primary={toUser.name} sx={{ ml: 2 }} />
+                                                </>
+                                            ) : toUser._id === loguser ? (
+                                                <>
+                                                    <Avatar alt={fromUser.name} src={fromUser.profile} />
+                                                    <ListItemText primary={fromUser.name} sx={{ ml: 2 }} />
+                                                </>
+                                            ) : null}
+                                        </CardContent>
+                                        <CardActions>
+                                            <Button variant="contained" color="warning" onClick={() => handleMessage(toUser._id, fromUser._id)}>
+                                                Chat
+                                            </Button>
+                                            <Button variant="contained" color="secondary" onClick={() => handleRemoveFriend(friend._id)}>
+                                                Remove Friend
+                                            </Button>
+                                        </CardActions>
+                                    </Card>
+                                </ListItem>
+                            );
+                        })}
+                    </List>
                 </Box>
             </Container>
         </ThemeProvider>
