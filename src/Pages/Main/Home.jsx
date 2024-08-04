@@ -7,6 +7,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import Footer from '../../Components/Footer/Footer';
 
 const defaultTheme = createTheme();
 
@@ -284,7 +285,7 @@ const Home = () => {
                     </Grid>
                 </Grid>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </ThemeProvider>
     );
 };
