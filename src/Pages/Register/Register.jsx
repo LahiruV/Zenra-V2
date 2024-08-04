@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LeftSection from '../../Components/Register/LeftSection';
 import RightSection from '../../Components/Register/RightSection';
+import Footer from '../../Components/Footer/Footer';
 
 const defaultTheme = createTheme();
 
@@ -115,7 +116,7 @@ export default function Register() {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Grid container component="main" sx={{ height: '100vh' }}>
+            <Grid container component="main" >
                 <LeftSection quotes={quotes} currentQuoteIndex={currentQuoteIndex} />
                 <RightSection handleSubmit={handleSubmit} errors={errors} />
 
@@ -148,6 +149,7 @@ export default function Register() {
                     </DialogActions>
                 </Dialog>
             </Grid>
+            <Footer />
         </ThemeProvider>
     );
 }

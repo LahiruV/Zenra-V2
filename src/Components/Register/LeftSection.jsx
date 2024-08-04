@@ -89,18 +89,7 @@ export default function LeftSection({ quotes, currentQuoteIndex, setCurrentQuote
                 >
                     {quotes[currentQuoteIndex]}
                 </Typography>
-            </Box>
-            <Box
-                sx={{
-                    position: 'absolute',
-                    bottom: 0,
-                    width: '100%',
-                    textAlign: 'center',
-                    padding: '1rem',
-                }}
-            >
-                <Copyright />
-            </Box>
+            </Box>           
         </Grid>
         </ThemeProvider>
     );

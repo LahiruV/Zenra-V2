@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Swal from 'sweetalert2';
@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LeftSection from '../../Components/Login/LeftSection';
 import RightSection from '../../Components/Login/RightSection';
+import Footer from '../../Components/Footer/Footer';
 
 const defaultTheme = createTheme();
 
@@ -88,6 +89,7 @@ export default function Login() {
                 <LeftSection quotes={quotes} currentQuoteIndex={currentQuoteIndex} />
                 <RightSection handleSubmit={handleSubmit} errors={errors} />
             </Grid>
+            <Footer/>
         </ThemeProvider>
     );
 }
