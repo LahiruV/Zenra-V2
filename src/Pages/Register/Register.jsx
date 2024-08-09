@@ -66,7 +66,7 @@ export default function Register() {
             return;
         }
         try {
-            const mailSend = await axios.post(`http://localhost:5000/api/auth/mailSend`, { email: email });
+            const mailSend = await axios.post(`https://backendnizz.onrender.com/auth/mailSend`, { email: email });
             setCode(mailSend.data.code);
             setIsModalOpen(true);  // Open the verification code modal  
         }
@@ -84,7 +84,7 @@ export default function Register() {
     const handleVerificationSubmit = async () => {
         if (parseInt(verificationCode) === code) {            
             try {               
-                const response = await axios.post(`http://localhost:5000/api/auth/register`, user);
+                const response = await axios.post(`https://backendnizz.onrender.com/auth/register`, user);
             } catch (err) {
                 Swal.fire({
                     title: 'Error!',

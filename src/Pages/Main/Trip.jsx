@@ -55,7 +55,7 @@ export default function Trip() {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/trip/addTrip', tripData, {
+            const response = await axios.post('https://backendnizz.onrender.com/trip/addTrip', tripData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`

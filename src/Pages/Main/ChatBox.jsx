@@ -27,7 +27,7 @@ const ChatBox = () => {
           'Authorization': `Bearer ${token}`
         }
       };
-      const response = await axios.get(`http://localhost:5000/api/chat/getchats`, config);
+      const response = await axios.get(`https://backendnizz.onrender.com/chat/getchats`, config);
       const filteredMessages = response.data.filter(message => message.uniqueChatId1 === uniqueChatId1 || message.uniqueChatId2 === uniqueChatId2 || message.uniqueChatId1 === uniqueChatId2 || message.uniqueChatId2 === uniqueChatId1);
       setMessages(filteredMessages);
     } catch (error) {
@@ -56,7 +56,7 @@ const ChatBox = () => {
         messages: message
       };
       console.log('Sending message', data);
-      const response = await axios.post('http://localhost:5000/api/chat/chat', data, config);
+      const response = await axios.post('https://backendnizz.onrender.com/chat/chat', data, config);
       console.log('Message sent', response.data);         
       setMessage('');
     } catch (error) {

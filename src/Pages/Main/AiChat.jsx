@@ -23,7 +23,7 @@ const AiChat = () => {
             }
         };
         try {
-            const response = await axios.post('http://localhost:5000/api/aiChat/sendMessage', { message }, config);
+            const response = await axios.post('https://backendnizz.onrender.com/aiChat/sendMessage', { message }, config);
             const botResponse = response.data;
             setMessages((prevMessages) => [...prevMessages, { text: message, isSender: true }, { text: botResponse, isSender: false }]);
             setMessage('');

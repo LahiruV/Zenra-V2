@@ -28,7 +28,7 @@ export default function FriendsList() {
                     }
                 };
 
-                const response = await axios.get(`http://localhost:5000/api/friend/allFriends/${loguser}`, config);
+                const response = await axios.get(`https://backendnizz.onrender.com/friend/allFriends/${loguser}`, config);
                 setFriends(response.data.friends);
             } catch (error) {
                 console.error('Error fetching friends', error);
@@ -53,7 +53,7 @@ export default function FriendsList() {
                 }
             };
 
-            const response = await axios.delete(`http://localhost:5000/api/friend/removeFriend/${id}`, config);
+            const response = await axios.delete(`https://backendnizz.onrender.com/friend/removeFriend/${id}`, config);
             console.log(response.data);
             setFriends(friends.filter(friend => friend._id !== id));
         } catch (error) {
